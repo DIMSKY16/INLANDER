@@ -23,10 +23,10 @@ function initTypewriter() {
 
     const typed = new Typed(element, {
         strings: [
-            'Membangun & Renovasi dengan Tepat Waktu, Berkualitas, dan Bergaransi',
             '15+ Tahun Pengalaman dalam Industri Konstruksi',
             '200+ Proyek Berhasil Kami Selesaikan',
-            'Tim Profesional dengan Sertifikasi Tinggi'
+            'Tim Profesional dengan Sertifikasi Tinggi',
+            'Membangun dan Renovasi dengan Tepat Waktu, Berkualitas, dan Bergaransi'
         ],
         typeSpeed: 50,
         backSpeed: 30,
