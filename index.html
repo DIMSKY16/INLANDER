@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inlander Konstruksi - Membangun & Renovasi dengan Tepat Waktu, Berkualitas, dan Bergaransi</title>
+    <meta name="description" content="Inlander Konstruksi - Perusahaan kontraktor profesional dengan 15+ tahun pengalaman. Melayani bangun baru, renovasi, interior, eksterior, dan desain arsitektur.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forest': '#1B4332',
+                        'sage': '#52B788',
+                        'charcoal': '#2D3748',
+                        'soft-gray': '#F8F9FA'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .hero-bg {
+            background: linear-gradient(rgba(27, 67, 50, 0.4), rgba(27, 67, 50, 0.6)), url('resources/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .hero-bg h1, .hero-bg p {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .service-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(27, 67, 50, 0.2);
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .nav-blur {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #1B4332, #52B788);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .stats-counter {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+<body class="font-body text-charcoal">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 nav-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-forest rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">IK</span>
+                    </div>
+                    <span class="font-display font-bold text-xl text-forest">Inlander Konstruksi</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-forest hover:text-sage transition-colors font-medium">Beranda</a>
+                    <a href="services.html" class="text-forest hover:text-sage transition-colors font-medium">Layanan</a>
+                    <a href="portfolio.html" class="text-forest hover:text-sage transition-colors font-medium">Portofolio</a>
+                    <a href="contact.html" class="text-forest hover:text-sage transition-colors font-medium">Kontak</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/6282112101929" class="bg-sage text-white px-4 py-2 rounded-lg hover:bg-forest transition-colors font-accent font-medium">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <div class="reveal">
+                <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                    <span class="block">Inlander</span>
+                    <span class="block gradient-text">Konstruksi</span>
+                </h1>
+            </div>
+            
+            <div class="reveal">
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed">
+                    <span id="typed-text"></span>
+                </p>
+            </div>
+            
+            <div class="reveal flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-sage text-white px-8 py-4 rounded-lg hover:bg-forest transition-all duration-300 font-accent font-semibold text-lg hover:scale-105">
+                    Konsultasi Gratis
+                </a>
+                <a href="services.html" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-all duration-300 font-accent font-semibold text-lg hover:scale-105">
+                    Lihat Layanan
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="font-display text-4xl font-bold text-forest mb-6">Tentang Kami</h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        Didirikan pada tahun 2008, Inlander Konstruksi telah menjadi mitra terpercaya dalam dunia konstruksi dengan pengalaman lebih dari 15 tahun. Kami telah menangani lebih dari 200 proyek berbagai skala, dari rumah tinggal hingga bangunan komersial.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Komitmen kami adalah memberikan hasil konstruksi berkualitas tinggi dengan ketepatan waktu dan garansi kerja yang komprehensif. Setiap proyek kami tangani dengan presisi dan dedikasi tinggi.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center p-4 bg-soft-gray rounded-lg">
+                            <div class="text-3xl font-bold text-forest stats-counter" data-target="200">0</div>
+                            <div class="text-gray-600 font-medium">Proyek Selesai</div>
+                        </div>
+                        <div class="text-center p-4 bg-soft-gray rounded-lg">
+                            <div class="text-3xl font-bold text-forest stats-counter" data-target="15">0</div>
+                            <div class="text-gray-600 font-medium">Tahun Pengalaman</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <img src="resources/team-professional.jpg" alt="Tim Profesional Inlander Konstruksi" class="rounded-lg shadow-xl w-full h-96 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-soft-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-forest mb-4">Layanan Kami</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Kami menyediakan layanan konstruksi komprehensif untuk memenuhi semua kebutuhan bangunan Anda
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg reveal">
+                    <div class="w-16 h-16 bg-forest rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🏗️</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Bangun Baru</h3>
+                    <p class="text-gray-600 mb-4">Rumah tinggal, ruko, kost, gudang, kantor, villa dengan kualitas premium.</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Desain custom sesuai kebutuhan</li>
+                        <li>• Material berkualitas tinggi</li>
+                        <li>• Garansi struktur 10 tahun</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg reveal">
+                    <div class="w-16 h-16 bg-forest rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🔧</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Interior</h3>
+                    <p class="text-gray-600 mb-4">Kitchen set, lemari custom, plafon gypsum, partisi ruangan elegan.</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Desain modern dan fungsional</li>
+                        <li>• Finishing halus dan rapi</li>
+                        <li>• Bahan tahan lama</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg reveal">
+                    <div class="w-16 h-16 bg-forest rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🏠</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Eksterior</h3>
+                    <p class="text-gray-600 mb-4">Pagar besi, kanopi baja ringan, carport, taman, kolam ikan.</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Ketahanan cuaca ekstrem</li>
+                        <li>• Desain estetis dan kokoh</li>
+                        <li>• Perawatan minimal</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg reveal">
+                    <div class="w-16 h-16 bg-forest rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🛣️</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Infrastruktur</h3>
+                    <p class="text-gray-600 mb-4">Jalan lingkungan, saluran air, rabat beton, talud.</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Standar konstruksi tinggi</li>
+                        <li>• Tahan lama dan stabil</li>
+                        <li>• Sesuai peraturan</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg reveal">
+                    <div class="w-16 h-16 bg-forest rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">⚡</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Listrik & Plumbing</h3>
+                    <p class="text-gray-600 mb-4">Instalasi listrik, pengeboran air tanah, pompa, toren.</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Sertifikasi keamanan</li>
+                        <li>• Instalasi profesional</li>
+                        <li>• Garansi peralatan</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white p-8 rounded-xl shadow-lg reveal">
+                    <div class="w-16 h-16 bg-forest rounded-lg flex items-center justify-center mb-6">
+                        <span class="text-white text-2xl">🏢</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-4">Bangunan Komersial</h3>
+                    <p class="text-gray-600 mb-4">Restoran, kafe, toko, kantor cabang dengan desain modern.</p>
+                    <ul class="text-sm text-gray-500 space-y-1">
+                        <li>• Konsep bisnis terintegrasi</li>
+                        <li>• Efisiensi ruang maksimal</li>
+                        <li>• Branding visual kuat</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 reveal">
+                <a href="services.html" class="bg-forest text-white px-8 py-4 rounded-lg hover:bg-sage transition-all duration-300 font-accent font-semibold text-lg hover:scale-105">
+                    Lihat Semua Layanan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-forest mb-4">Mengapa Memilih Kami</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Keunggulan kami dalam setiap proyek konstruksi yang kami kerjakan
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center reveal">
+                    <div class="w-20 h-20 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-3xl">⏱️</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-3">Tepat Waktu</h3>
+                    <p class="text-gray-600">Pengerjaan sesuai timeline yang disepakati dengan sistem monitoring ketat.</p>
+                </div>
+                
+                <div class="text-center reveal">
+                    <div class="w-20 h-20 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-3xl">🛡️</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-3">Bergaransi</h3>
+                    <p class="text-gray-600">Garansi kerja 6-12 bulan tergantung jenis layanan dan material yang digunakan.</p>
+                </div>
+                
+                <div class="text-center reveal">
+                    <div class="w-20 h-20 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-3xl">👥</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-3">Tim Profesional</h3>
+                    <p class="text-gray-600">Arsitek, mandor, dan tukang ahli dengan sertifikasi dan pengalaman tinggi.</p>
+                </div>
+                
+                <div class="text-center reveal">
+                    <div class="w-20 h-20 bg-sage rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-3xl">💎</span>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-forest mb-3">Material Premium</h3>
+                    <p class="text-gray-600">Pilihan material fleksibel dengan kualitas standar, medium, hingga premium.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Price Estimate Section -->
+    <section class="py-20 bg-forest text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold mb-4">Estimasi Biaya</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Harga transparan tanpa biaya tersembunyi untuk setiap jenis layanan kami
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl text-center reveal">
+                    <h3 class="font-display text-lg font-bold mb-2">Bangun Rumah Baru</h3>
+                    <div class="text-2xl font-bold text-sage mb-2">Rp4.6jt - Rp5.5jt</div>
+                    <div class="text-sm text-gray-300">per meter persegi (habel)</div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl text-center reveal">
+                    <h3 class="font-display text-lg font-bold mb-2">Kitchen Set Custom</h3>
+                    <div class="text-2xl font-bold text-sage mb-2">Rp3jt - Rp4jt</div>
+                    <div class="text-sm text-gray-300">per meter persegi (cat duco)</div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl text-center reveal">
+                    <h3 class="font-display text-lg font-bold mb-2">Pengeboran Air</h3>
+                    <div class="text-2xl font-bold text-sage mb-2">Rp19jt</div>
+                    <div class="text-sm text-gray-300">per titik sampai air bersih</div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl text-center reveal">
+                    <h3 class="font-display text-lg font-bold mb-2">Desain Arsitektur</h3>
+                    <div class="text-2xl font-bold text-sage mb-2">Rp10jt</div>
+                    <div class="text-sm text-gray-300">per unit rumah 2D/3D dan video Animasi</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 reveal">
+                <a href="contact.html" class="bg-sage text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-all duration-300 font-accent font-semibold text-lg hover:scale-105">
+                    Dapatkan Penawaran
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="py-20 bg-soft-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-forest mb-4">Area Layanan</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Kami melayani wilayah Jakarta dan sekitarnya dengan tim yang siap datang ke lokasi Anda
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-5 gap-6">
+                <div class="bg-white p-6 rounded-xl text-center shadow-lg reveal">
+                    <div class="text-3xl mb-3">🏙️</div>
+                    <h3 class="font-display text-lg font-bold text-forest">Jakarta</h3>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl text-center shadow-lg reveal">
+                    <div class="text-3xl mb-3">🏘️</div>
+                    <h3 class="font-display text-lg font-bold text-forest">Bekasi</h3>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl text-center shadow-lg reveal">
+                    <div class="text-3xl mb-3">🏡</div>
+                    <h3 class="font-display text-lg font-bold text-forest">Depok</h3>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl text-center shadow-lg reveal">
+                    <div class="text-3xl mb-3">🏢</div>
+                    <h3 class="font-display text-lg font-bold text-forest">Tangerang</h3>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl text-center shadow-lg reveal">
+                    <div class="text-3xl mb-3">🌳</div>
+                    <h3 class="font-display text-lg font-bold text-forest">Bogor</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-sage rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">IK</span>
+                        </div>
+                        <span class="font-display font-bold text-xl">Inlander Konstruksi</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Mitra terpercaya untuk semua kebutuhan konstruksi Anda dengan pengalaman 15+ tahun.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-lg font-bold mb-4">Layanan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Bangun Baru</a></li>
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Renovasi</a></li>
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Interior</a></li>
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Eksterior</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-lg font-bold mb-4">Kontak</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📞 0821-1210-1929</li>
+                        <li>📧 info@inlanderkonstruksi.com</li>
+                        <li>🕒 Buka Setiap Hari</li>
+                        <li>📍 Jakarta & Sekitarnya</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-lg font-bold mb-4">Area Layanan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>• Jakarta</li>
+                        <li>• Bekasi</li>
+                        <li>• Depok</li>
+                        <li>• Tangerang</li>
+                        <li>• Bogor</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Inlander Konstruksi. All rights reserved. | Membangun dengan Integritas & Kualitas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6282112101929" class="floating-whatsapp bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </a>
+
+    <script src="main.js"></script>
+</body>
+</html>

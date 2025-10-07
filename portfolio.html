@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Inlander Konstruksi</title>
+    <meta name="description" content="Portofolio proyek Inlander Konstruksi: rumah tinggal, bangunan komersial, renovasi, dan desain interior dengan kualitas premium.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'forest': '#1B4332',
+                        'sage': '#52B788',
+                        'charcoal': '#2D3748',
+                        'soft-gray': '#F8F9FA'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .portfolio-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(27, 67, 50, 0.15);
+        }
+        
+        .portfolio-card img {
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: #1B4332;
+            color: white;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .nav-blur {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            }
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox.active {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="font-body text-charcoal">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-forest rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">IK</span>
+                    </div>
+                    <span class="font-display font-bold text-xl text-forest">Inlander Konstruksi</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-forest hover:text-sage transition-colors font-medium">Beranda</a>
+                    <a href="services.html" class="text-forest hover:text-sage transition-colors font-medium">Layanan</a>
+                    <a href="portfolio.html" class="text-sage font-semibold">Portofolio</a>
+                    <a href="contact.html" class="text-forest hover:text-sage transition-colors font-medium">Kontak</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="https://wa.me/6282112101929" class="bg-sage text-white px-4 py-2 rounded-lg hover:bg-forest transition-colors font-accent font-medium">
+                        Hubungi Kami
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-forest to-sage text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal">
+                <h1 class="font-display text-5xl md:text-6xl font-bold mb-6">Portofolio Kami</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+                    200+ proyek berhasil dengan kualitas premium dan kepuasan client terjamin
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="py-8 bg-soft-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center gap-4 reveal">
+                <button class="filter-btn active px-6 py-3 rounded-lg bg-white text-forest font-medium hover:bg-forest hover:text-white" data-filter="all">
+                    Semua Proyek
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-lg bg-white text-forest font-medium hover:bg-forest hover:text-white" data-filter="residential">
+                    Rumah Tinggal
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-lg bg-white text-forest font-medium hover:bg-forest hover:text-white" data-filter="commercial">
+                    Bangunan Komersial
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-lg bg-white text-forest font-medium hover:bg-forest hover:text-white" data-filter="interior">
+                    Interior & Renovasi
+                </button>
+                <button class="filter-btn px-6 py-3 rounded-lg bg-white text-forest font-medium hover:bg-forest hover:text-white" data-filter="infrastructure">
+                    Infrastruktur
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                
+                <!-- Project 1 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="residential">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="rmhmdrn1.jpg" alt="Rumah Modern Minimalis" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Rumah Tinggal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Rumah Modern Minimalis</h3>
+                        <p class="text-gray-600 mb-4">Pembangunan rumah 2 lantai dengan konsep minimalis modern di kawasan Jakarta Selatan.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Luas: 250 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="commercial">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="km1.jpg" alt="Kafe Modern Industrial" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Komersial
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Kafe Modern Industrial</h3>
+                        <p class="text-gray-600 mb-4">Renovasi bangunan menjadi kafe dengan konsep industrial chic di kawasan Bekasi.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Luas: 180 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="interior">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="i1.jpg" alt="Interior Luxury Kitchen" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Interior
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Luxury Kitchen Set</h3>
+                        <p class="text-gray-600 mb-4">Pembuatan kitchen set custom dengan material premium dan desain modern untuk rumah mewah.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Kitchen: 25 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="infrastructure">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="pengerasanjalandranin1.jpg" alt="Jalan Lingkungan" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Infrastruktur
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Perkerasan Jalan</h3>
+                        <p class="text-gray-600 mb-4">Pembangunan jalan lingkungan dengan perkerasan beton dan sistem drainase modern.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Panjang: 500 m</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="residential">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="klasikmodern1.jpg" alt="Rumah Klasik Modern" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Rumah Tinggal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Rumah Klasik Modern</h3>
+                        <p class="text-gray-600 mb-4">Rumah bergaya klasik modern dengan detail arsitektur yang mewah di kawasan Bogor.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Luas: 350 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="commercial">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="kantormewah.jpg" alt="Office Building" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Komersial
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Gedung Perkantoran</h3>
+                        <p class="text-gray-600 mb-4">Pembangunan gedung perkantoran 3 lantai dengan fasilitas modern di kawasan Tangerang.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Luas: 450 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="interior">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="officeinteriormewah.jpg" alt="Interior Office" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Interior
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Office Interior Design</h3>
+                        <p class="text-gray-600 mb-4">Desain interior modern untuk kantor dengan konsep open space dan area kolaboratif.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Area: 200 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="residential">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="rumah kontenporer1.jpg" alt="Rumah Modern Kontemporer" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Rumah Tinggal
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Rumah Kontemporer</h3>
+                        <p class="text-gray-600 mb-4">Rumah 2 lantai dengan desain kontemporer dan smart home system di kawasan Depok.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Luas: 280 m²</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="portfolio-card bg-white rounded-xl shadow-lg overflow-hidden reveal" data-category="infrastructure">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="drainase1.jpg" alt="Drainase System" class="w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-sage text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Infrastruktur
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-bold text-forest mb-2">Sistem Drainase</h3>
+                        <p class="text-gray-600 mb-4">Pemasangan sistem drainase modern untuk perumahan dengan kapasitas tinggi.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Area: 2 ha</span>
+                            <span class="text-sm text-sage font-semibold">Selesai 2022</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-forest text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="reveal">
+                    <div class="text-4xl font-bold text-sage mb-2 stats-counter" data-target="200">0</div>
+                    <div class="text-gray-300">Proyek Selesai</div>
+                </div>
+                <div class="reveal">
+                    <div class="text-4xl font-bold text-sage mb-2 stats-counter" data-target="150">0</div>
+                    <div class="text-gray-300">Rumah Tinggal</div>
+                </div>
+                <div class="reveal">
+                    <div class="text-4xl font-bold text-sage mb-2 stats-counter" data-target="35">0</div>
+                    <div class="text-gray-300">Bangunan Komersial</div>
+                </div>
+                <div class="reveal">
+                    <div class="text-4xl font-bold text-sage mb-2 stats-counter" data-target="15">0</div>
+                    <div class="text-gray-300">Infrastruktur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-soft-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-display text-4xl font-bold text-forest mb-4">Testimoni Client</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Apa kata mereka tentang layanan dan hasil kerja kami
+                </p>
+            </div>
+            
+            <div class="splide" id="testimonial-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                                <div class="text-4xl text-sage mb-4">⭐⭐⭐⭐⭐</div>
+                                <p class="text-gray-600 mb-6 italic">
+                                    "Sangat puas dengan hasil rumah kami. Tim Inlander Konstruksi profesional, tepat waktu, dan hasilnya melebihi ekspektasi. Recommended!"
+                                </p>
+                                <div class="font-semibold text-forest">Bapak Andi Wijaya</div>
+                                <div class="text-sm text-gray-500">Pemilik Rumah Modern Minimalis</div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                                <div class="text-4xl text-sage mb-4">⭐⭐⭐⭐⭐</div>
+                                <p class="text-gray-600 mb-6 italic">
+                                    "Kitchen set yang dibuat sangat bagus dan fungsional. Material berkualitas dan finishingnya rapi. Terima kasih Inlander Konstruksi!"
+                                </p>
+                                <div class="font-semibold text-forest">Ibu Sari Dewi</div>
+                                <div class="text-sm text-gray-500">Pemilik Luxury Kitchen Set</div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="bg-white p-8 rounded-xl shadow-lg text-center">
+                                <div class="text-4xl text-sage mb-4">⭐⭐⭐⭐⭐</div>
+                                <p class="text-gray-600 mb-6 italic">
+                                    "Kafe kami jadi tempat favorit berkat desain yang dibuat Inlander. Konsep industrialnya keren dan sesuai dengan brand kami."
+                                </p>
+                                <div class="font-semibold text-forest">Bapak Rudi Santoso</div>
+                                <div class="text-sm text-gray-500">Owner Kafe Modern Industrial</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-forest text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="reveal">
+                <h2 class="font-display text-4xl font-bold mb-6">Ingin Proyek Seperti Ini?</h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Konsultasikan kebutuhan konstruksi Anda dengan tim profesional kami. Gratis survei dan penawaran!
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="contact.html" class="bg-sage text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-all duration-300 font-accent font-semibold text-lg hover:scale-105">
+                        Konsultasi Gratis
+                    </a>
+                    <a href="services.html" class="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-forest transition-all duration-300 font-accent font-semibold text-lg hover:scale-105">
+                        Lihat Layanan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="" id="lightbox-img">
+        <button class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300" onclick="closeLightbox()">&times;</button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-sage rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">IK</span>
+                        </div>
+                        <span class="font-display font-bold text-xl">Inlander Konstruksi</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">
+                        Mitra terpercaya untuk semua kebutuhan konstruksi Anda dengan pengalaman 15+ tahun.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-lg font-bold mb-4">Layanan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Bangun Baru</a></li>
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Renovasi</a></li>
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Interior</a></li>
+                        <li><a href="services.html" class="hover:text-sage transition-colors">Eksterior</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-lg font-bold mb-4">Kontak</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>📞 0812-3456-7890</li>
+                        <li>📧 info@inlanderkonstruksi.com</li>
+                        <li>🕒 Buka Setiap Hari</li>
+                        <li>📍 Jakarta & Sekitarnya</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-display text-lg font-bold mb-4">Area Layanan</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>• Jakarta</li>
+                        <li>• Bekasi</li>
+                        <li>• Depok</li>
+                        <li>• Tangerang</li>
+                        <li>• Bogor</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Inlander Konstruksi. All rights reserved. | Membangun dengan Integritas & Kualitas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6282112101929" class="floating-whatsapp bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-colors">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+        </svg>
+    </a>
+
+    <script>
+        // Initialize testimonial slider
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('#testimonial-slider', {
+                type: 'loop',
+                perPage: 1,
+                autoplay: true,
+                interval: 5000,
+                arrows: false,
+                pagination: true
+            }).mount();
+            
+            initPortfolioFilter();
+            initLightbox();
+            initLoadMore();
+        });
+
+        // Portfolio filter functionality
+        function initPortfolioFilter() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    const filter = button.dataset.filter;
+                    
+                    portfolioCards.forEach(card => {
+                        if (filter === 'all' || card.dataset.category === filter) {
+                            card.style.display = 'block';
+                            anime({
+                                targets: card,
+                                opacity: [0, 1],
+                                scale: [0.8, 1],
+                                duration: 500,
+                                easing: 'easeOutQuart'
+                            });
+                        } else {
+                            anime({
+                                targets: card,
+                                opacity: [1, 0],
+                                scale: [1, 0.8],
+                                duration: 300,
+                                easing: 'easeInQuart',
+                                complete: () => {
+                                    card.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        }
+
+        // Lightbox functionality
+        function initLightbox() {
+            const portfolioCards = document.querySelectorAll('.portfolio-card img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            portfolioCards.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    lightbox.classList.add('active');
+                });
+            });
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Load more functionality
+        function initLoadMore() {
+            const loadMoreBtn = document.getElementById('load-more');
+            let isLoaded = false;
+            
+            loadMoreBtn.addEventListener('click', () => {
+                if (!isLoaded) {
+                    // Simulate loading more projects
+                    loadMoreBtn.textContent = 'Memuat...';
+                    setTimeout(() => {
+                        loadMoreBtn.textContent = 'Semua Proyek Ditampilkan';
+                        loadMoreBtn.disabled = true;
+                        loadMoreBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                        isLoaded = true;
+                    }, 1000);
+                }
+            });
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Close lightbox on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeLightbox();
+            }
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
